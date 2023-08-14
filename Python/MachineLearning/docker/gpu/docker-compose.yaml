@@ -1,0 +1,28 @@
+version: "3.8"
+
+services:
+  core:
+    build:
+    # NVIDIA Docker
+    # https://hub.docker.com/r/nvidia/cuda/tags
+    
+      args:
+        - BASE_IMAGE=nvidia/cuda:11.8.0-devel-ubuntu22.04
+        - PYTHON_VERSION=3.10
+        - UID=${HOST_UID-1000}
+        - GID=${HOST_GID-1000}
+      context: ../../
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ../../:/home/User/core/
+    ports:
+      - 8000:8000
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [ gpu ]
+    tty: true
+    shm_size: 2gb
