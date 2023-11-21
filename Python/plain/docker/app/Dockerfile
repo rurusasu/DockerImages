@@ -1,13 +1,14 @@
 ARG BASE_IMAGE=ubuntu:22.04
 FROM ${BASE_IMAGE}
 
-ARG PROJECT_NAME=Core
-ARG USER_NAME=User
+ARG PROJECT_NAME=paper_translator
+#ARG USER_NAME=challenger
 #ARG GROUP_NAME=challengers
 #ARG UID=1000
 #ARG GID=1000
 ARG PYTHON_VERSION=3.11
-ARG APPLICATION_DIRECTORY=/home/${USER_NAME}/${PROJECT_NAME}
+#ARG APPLICATION_DIRECTORY=/home/${USER_NAME}/${PROJECT_NAME}
+ARG APPLICATION_DIRECTORY=/home/${PROJECT_NAME}
 ARG RUN_POETRY_INSTALL_AT_BUILD_TIME="false"
 ARG CHROME_DRIVER_VERSION=114.0.5735.90
 
@@ -37,10 +38,24 @@ RUN apt update && apt install --no-install-recommends -y \
   sudo \
   wget \
   curl \
-  git \
   gnupg \
   && apt-get clean \
   && rm -r /var/lib/apt/lists/*
+
+# 追加パッケージインストール
+RUN apt update && apt install --no-install-recommends -y \
+  default-jre \
+  default-jdk \
+  && apt-get clean \
+  && rm -r /var/lib/apt/lists/*
+
+RUN wget -q https://github.com/kermitt2/grobid/archive/0.7.3.zip -O /tmp/0.7.3.zip\
+  && cd /tmp/ \
+  && unzip 0.7.3.zip -d /lib\
+  && cd /lib/grobid-0.7.3/ \
+  && ./gradlew clean install \
+  && cd /tmp/ \
+  && rm -f 0.7.3.zip
 
 # chrome driver
 #ADD https://chromedriver.storage.googleapis.com/${CHROME_DRIVER_VERSION}/chromedriver_linux64.zip /opt/chrome/
