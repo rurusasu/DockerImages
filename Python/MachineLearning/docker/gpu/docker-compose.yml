@@ -7,10 +7,13 @@ services:
     # https://hub.docker.com/r/nvidia/cuda/tags
     
       args:
-        - BASE_IMAGE=nvidia/cuda:12.2.0-devel-ubuntu22.04
-        - PYTHON_VERSION=3.10
+        - BASE_IMAGE=nvidia/cuda:12.2.2-devel-ubuntu22.04
+        - PROJECT_NAME=app
+        - USER_NAME=challenger
+        - PYTHON_VERSION=3.11
         - UID=${HOST_UID-1000}
         - GID=${HOST_GID-1000}
+        - RUN_POETRY_INSTALL_AT_BUILD_TIME=true
       context: ../../
       dockerfile: docker/Dockerfile
     volumes:

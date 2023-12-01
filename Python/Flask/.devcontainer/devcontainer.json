@@ -1,9 +1,9 @@
 // See https://containers.dev/implementors/json_reference/ for configuration reference
 {
-  "name": "KakeiBo",
+  "name": "app",
   "dockerComposeFile": "../docker/docker-compose.yml",
   "service": "app",
-  "workspaceFolder": "/home/challenger/Kakeibo",
+  "workspaceFolder": "/home/challenger/app",
   "settings": {
     "editor.formatOnSave": true,
     "python.formatting.provider": "black",
@@ -11,15 +11,18 @@
     "better-comments.highlightPlainText": true
   },
   "extensions": [
+    // Theme
+    "PKief.material-icon-theme", // Material Icon Theme
+    "GitHub.github-vscode-theme", // GitHub Theme
     // Python 関係
     "ms-python.python", // Python
     "ms-python.vscode-pylance", // Pylance
     "KevinRose.vsc-python-indent", // Python Indent
     "ms-python.black-formatter", // Black
     "ms-python.flake8", // flake8 
-    "ms-python.mypy-type-checker", // mypy
+    "ms-python.isort", // isort
     "ms-toolsai.jupyter", // Jupyter
-    "ms-toolsai.jupyter-renderers", // Jupyter Renderers
+    "magicstack.MagicPython", // MagicPython
     // HTML 関係
     "formulahendry.auto-rename-tag", // Auto Rename Tag
     "HTMLHint.vscode-htmlhint", // HTMLHint
@@ -32,7 +35,8 @@
     "GitHub.copilot-chat", // Github Copilot Chat
     "oderwat.indent-rainbow", // Indent Rainbow
     "christian-kohler.path-intellisense", // Path Intellisense
-    "mosapride.zenkaku" // Zenkaku
+    "shardulm94.trailing-spaces", // Trailing Spaces
+    "mosapride.zenkaku", // Zenkaku
   ],
   // VSCodeを閉じた時、コンテナが自動停止するように指定
   "shutdownAction": "stopCompose"

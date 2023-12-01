@@ -5,6 +5,8 @@ services:
     build:
       args:
         - BASE_IMAGE=python:3.11.2-bullseye
+        - PROJECT_NAME=app
+        - USER_NAME=challenger
         - PYTHON_VERSION=3.11
         - UID=${HOST_UID-1000}
         - GID=${HOST_GID-1000}
