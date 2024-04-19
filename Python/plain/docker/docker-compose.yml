@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  app:
+    build:
+      args:
+        - BASE_IMAGE=python:3.11.2-bullseye
+        - PROJECT_NAME=core
+        - PYTHON_VERSION=3.11
+        - UID=${HOST_UID-1000}
+        - GID=${HOST_GID-1000}
+        - RUN_POETRY_INSTALL_AT_BUILD_TIME=true
+      context: .
+      dockerfile: ./app/Dockerfile
+    tty: true
+    volumes:
+      - ../app:/home/paper_translator/
+    ports:
+      - 8888:8888
