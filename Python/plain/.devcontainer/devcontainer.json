@@ -1,0 +1,56 @@
+// See https://containers.dev/implementors/json_reference/ for configuration reference
+{
+  "name": "core",
+  "build": {
+      "context": "..",
+      "dockerfile": "../docker/Dockerfile"
+  },
+  //"dockerComposeFile": "../docker/docker-compose.yml",
+  //"service": "app",
+  //"workspaceFolder": "/home/core",
+  //"onCreateCommand": "rye config --set-bool behavior.use-uv=true && rye sync",
+  "workspaceFolder": "/home/core",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/home/core,type=bind,consistency=cached",
+
+  "customizations": {
+      "vscode": {
+          "settings": {
+              "editor.formatOnSave": true,
+              "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+              //"python.formatting.provider": "black",
+              "better-comments.multilineComments": true,
+              "better-comments.highlightPlainText": true
+          },
+          "extensions": [
+              // Theme
+              "PKief.material-icon-theme", // Material Icon Theme
+              "GitHub.github-vscode-theme", // GitHub Theme
+              // Python 関係
+              "ms-python.python", // Python
+              "charliermarsh.ruff", // Ruff
+              //"ms-python.vscode-pylance", // Pylance
+              //"KevinRose.vsc-python-indent", // Python Indent
+              //"ms-python.black-formatter", // Black
+              //"ms-python.flake8", // flake8
+              //"ms-python.isort", // isort
+              "ms-toolsai.jupyter", // Jupyter
+              
+              //"magicstack.MagicPython", // MagicPython
+              // その他
+              "njpwerner.autodocstring", // autoDocstring
+              "aaron-bond.better-comments", // better-comments
+              "usernamehw.errorlens", // Error Lens
+              "GrapeCity.gc-excelviewer", // Excel Viewer
+              //"GitHub.copilot", // Github Copilot
+              //"GitHub.copilot-chat", // Github Copilot Chat
+              "oderwat.indent-rainbow", // Indent Rainbow
+              "christian-kohler.path-intellisense", // Path Intellisense
+              "shardulm94.trailing-spaces", // Trailing Spaces
+              "mosapride.zenkaku" // Zenkaku
+          ]
+      }
+  },
+
+  // VSCodeを閉じた時、コンテナが自動停止するように指定
+  "shutdownAction": "stopContainer"
+}
