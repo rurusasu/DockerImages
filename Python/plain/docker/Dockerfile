@@ -11,11 +11,9 @@ RUN apt-get update && \
   ca-certificates
 
 # Rye install
-# SHELL [ "/bin/bash", "-o", "pipefail", "-c" ]
 # 2024/05/24 追記
 # rye のダウンロード先が変更
 # ref: [gitリポジトリのReadme](https://github.com/astral-sh/rye)
-
 # 2024/05/24 追記
 # RYE_INSTALL_OPTION="--yes" がない場合、インストールエラー
 # ref: [Error: IO error: not a terminal #246](https://github.com/astral-sh/rye/issues/246)
