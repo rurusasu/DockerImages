@@ -1,0 +1,12 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: .devcontainer/Dockerfile
+      args:
+        BASE_IMAGE: ubuntu:latest
+    volumes:
+      - .:/workspace
+    environment:
+      - DISPLAY=:99
+    tty: true
