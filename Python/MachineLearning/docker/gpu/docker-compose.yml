@@ -3,13 +3,13 @@ version: "3.8"
 services:
   core:
     build:
-    # NVIDIA Docker
-    # https://hub.docker.com/r/nvidia/cuda/tags
-    
+      # NVIDIA Docker
+      # https://hub.docker.com/r/nvidia/cuda/tags
+
       args:
-        - BASE_IMAGE=nvidia/cuda:12.2.2-devel-ubuntu22.04
-        - PROJECT_NAME=app
-        - USER_NAME=challenger
+        - BASE_IMAGE=nvidia/cuda:12.4.1-cudnn-devel-ubuntu22.04
+        - PROJECT_NAME=core
+        - USER_NAME=user
         - PYTHON_VERSION=3.11
         - UID=${HOST_UID-1000}
         - GID=${HOST_GID-1000}
@@ -17,7 +17,7 @@ services:
       context: ../../
       dockerfile: docker/Dockerfile
     volumes:
-      - ../../:/home/User/core/
+      - ../../:/home/user/core
     ports:
       - 8000:8000
     deploy:

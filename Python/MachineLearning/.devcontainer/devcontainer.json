@@ -3,38 +3,38 @@
   "name": "core",
   "dockerComposeFile": "../docker/gpu/docker-compose.yml",
   "service": "core",
-  "workspaceFolder": "/home/core",
-  "settings": {
-    "editor.formatOnSave": true,
-    "python.formatting.provider": "black",
-    "better-comments.multilineComments": true,
-    "better-comments.highlightPlainText": true
+  "workspaceFolder": "/home/user/core",
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "editor.formatOnSave": true,
+        "python.formatting.provider": "black",
+        "better-comments.multilineComments": true,
+        "better-comments.highlightPlainText": true
+      },
+      "extensions": [
+        "PKief.material-icon-theme",
+        "GitHub.github-vscode-theme",
+        "ms-python.python",
+        "ms-python.vscode-pylance",
+        "KevinRose.vsc-python-indent",
+        "ms-python.black-formatter",
+        "ms-python.flake8",
+        "ms-python.isort",
+        "ms-toolsai.jupyter",
+        "magicstack.MagicPython",
+        "njpwerner.autodocstring",
+        "aaron-bond.better-comments",
+        "usernamehw.errorlens",
+        "GrapeCity.gc-excelviewer",
+        "GitHub.copilot",
+        "GitHub.copilot-chat",
+        "oderwat.indent-rainbow",
+        "christian-kohler.path-intellisense",
+        "shardulm94.trailing-spaces",
+        "mosapride.zenkaku"
+      ]
+    }
   },
-  "extensions": [
-    // Theme
-    "PKief.material-icon-theme", // Material Icon Theme
-    "GitHub.github-vscode-theme", // GitHub Theme
-    // Python 関係
-    "ms-python.python", // Python
-    "ms-python.vscode-pylance", // Pylance
-    "KevinRose.vsc-python-indent", // Python Indent
-    "ms-python.black-formatter", // Black
-    "ms-python.flake8", // flake8 
-    "ms-python.isort", // isort
-    "ms-toolsai.jupyter", // Jupyter
-    "magicstack.MagicPython", // MagicPython
-    // その他
-    "njpwerner.autodocstring", // autoDocstring
-    "aaron-bond.better-comments", // better-comments
-    "usernamehw.errorlens", // Error Lens
-    "GrapeCity.gc-excelviewer", // Excel Viewer
-    "GitHub.copilot", // Github Copilot
-    "GitHub.copilot-chat", // Github Copilot Chat
-    "oderwat.indent-rainbow", // Indent Rainbow
-    "christian-kohler.path-intellisense", // Path Intellisense
-    "shardulm94.trailing-spaces", // Trailing Spaces
-    "mosapride.zenkaku", // Zenkaku
-  ],
-  // VSCodeを閉じた時、コンテナが自動停止するように指定
   "shutdownAction": "stopCompose"
 }
